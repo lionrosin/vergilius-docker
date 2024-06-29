@@ -17,8 +17,8 @@ Follow these steps to get your Vergilus Project running inside a Docker containe
 
 1. **Clone the Repository**
    ```bash
-   git clone [repository URL]
-   cd [repository directory]
+   git clone https://github.com/lionrosin/vergilius-docker
+   cd vergilius-docker
 2. *Build the Docker Image*
     ```bash
     docker build -t vergilus-docker .
