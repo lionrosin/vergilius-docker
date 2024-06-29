@@ -11,7 +11,8 @@ RUN apt-get update && apt-get upgrade -y \
         git \
         bash \
         vim \
-        curl
+        curl\
+        dumb-init
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -38,5 +39,5 @@ RUN /bin/bash -c "service mysql start && mysql -e \"CREATE DATABASE dbvergilius;
 
 RUN /bin/bash -c "service mysql start && ./generate_good.sh"
 
-# Define the command to run MySQL server
-CMD ["/bin/bash"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["/bin/bash", "-c", "service mysql start && ./gradlew bootRun"]
